@@ -1,0 +1,25 @@
+{% extends 'site/site.html' %}
+{% load static %}
+
+{% block extrastyle %}
+    <link rel="stylesheet" href="{% static 'endpoints/css/group-list.css' %}">
+{% endblock %}
+
+{% block title %}Каталог эндпоинтов {{ project.human_name }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Каталог эндпоинтов {{ project.human_name }}</h1>
+        </div>
+    </div>
+    {% for group in groups %}
+        <div class="row group-row pb-2 pt-4">
+            <div class="col-12">
+                <a href="{% url 'endpoint_list' group.project.system_name group.system_name %}"><h3>{{ group.human_name }}</h3></a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

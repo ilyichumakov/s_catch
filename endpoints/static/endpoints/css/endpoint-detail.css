@@ -1,0 +1,4 @@
+.disabled-textarea {
+    padding: 2rem;
+    overflow: clip;
+}

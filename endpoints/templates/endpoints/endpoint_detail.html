@@ -1,0 +1,36 @@
+{% extends 'site/site.html' %}
+{% load static %}
+
+{% block extrastyle %}
+    <link rel="stylesheet" href="{% static 'endpoints/css/endpoint-detail.css' %}">
+{% endblock %}
+
+{% block title %}Эндпоинт "{{ endpoint.name }}"{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Эндпоинт "{{ endpoint.name }}"</h1>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-12">
+            {% for method in endpoint.allowed_methods.all %}
+                <button type="button" class="btn btn btn-outline-primary">{{ method.method_name }}</button>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="row url-row mt-2">
+        <a href="https://{{ endpoint.group.project.base_url }}{{ endpoint.url }}"><p>{{ endpoint.group.project.base_url }}{{ endpoint.url }}</p></a>
+    </div>
+    <div class="row description-row">
+        <p>{{ endpoint.description }}</p>
+    </div>
+    <div class="row response-row">
+        <textarea class="form-control disabled-textarea" disabled>{{ endpoint.payload }}</textarea>
+    </div>
+
+
+</div>
+{% endblock %}
