@@ -58,7 +58,7 @@ class EndPoint(AutoDateModel):
     group = models.ForeignKey(EndPointGroup, on_delete=models.PROTECT)
 
     def __str__(self):
-        return f"Каталог {self.name}"
+        return f"Эндпоинт {self.name}"
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
