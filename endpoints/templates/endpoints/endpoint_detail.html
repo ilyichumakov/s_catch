@@ -9,6 +9,14 @@
 
 {% block content %}
 <div class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'project_list' %}">Проекты</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'project_group_list' endpoint.group.project.system_name %}">{{ endpoint.group.project }}</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'endpoint_list' endpoint.group.project.system_name endpoint.group.system_name %}">{{ endpoint.group }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ endpoint }}</li>
+        </ol>
+    </nav>
     <div class="row">
         <div class="col-12">
             <h1>Эндпоинт "{{ endpoint.name }}"</h1>
