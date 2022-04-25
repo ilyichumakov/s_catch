@@ -9,7 +9,7 @@ class ProjectAdmin(admin.ModelAdmin):
 
 @admin.register(EndPointGroup)
 class EndPointGroupAdmin(admin.ModelAdmin):
-    pass
+    list_filter = ('project',)
 
 
 @admin.register(Method)
