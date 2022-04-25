@@ -19,8 +19,8 @@ class Project(AutoDateModel):
 
 
 class EndPointGroup(AutoDateModel):
-    human_name = models.CharField("Наименование", max_length=100, unique=True)
-    system_name = models.CharField("Системное имя", max_length=100, unique=True)
+    human_name = models.CharField("Наименование", max_length=100)
+    system_name = models.CharField("Системное имя", max_length=100)
     description = models.TextField("Описание", max_length=2000, null=True, blank=True)
     project = models.ForeignKey(Project, on_delete=models.PROTECT)
 
@@ -30,6 +30,7 @@ class EndPointGroup(AutoDateModel):
     class Meta:
         verbose_name = "Каталог эндпоинтов"
         verbose_name_plural = "Каталоги эндпоинтов"
+        unique_together = [('project', 'human_name'), ('project', 'system_name')]
 
 
 class Method(models.Model):
