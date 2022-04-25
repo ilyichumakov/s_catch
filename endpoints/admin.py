@@ -25,4 +25,4 @@ class MethodAdmin(admin.ModelAdmin):
 
 @admin.register(EndPoint)
 class EndPointAdmin(admin.ModelAdmin):
-    pass
+    list_filter = ('group__project',)
